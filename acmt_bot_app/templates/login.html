@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Login AIS Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body class="bg-black text-white min-h-screen">
+    <div class="grid grid-cols-1 md:grid-cols-2 min-h-screen relative">
+
+        <!-- Wallpaper / Gambar Kiri (Hanya di layar besar) -->
+        <div class="hidden md:block bg-cover bg-center relative" style="background-image: url({% static 'assets/wallpaper.png' %});">
+            
+            <!-- Animasi Text di atas wallpaper -->
+            <div class="absolute top-10 left-6">
+                <div class="inline-block bg-black/60 px-4 py-2 rounded-xl">
+                    <span id="typed-text" class="text-[#44F3CA] text-xl font-semibold"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Login -->
+        <div class="flex items-center justify-center p-8">
+            <div class="w-full max-w-sm bg-[#111111] p-8 rounded-2xl shadow-lg text-center">
+
+                <!-- Logo -->
+                <div class="flex justify-center mb-6">
+                    <img src="{% static 'assets/logo.png' %}" alt="AIS Logo" class="w-16 h-16 drop-shadow-[0_0_10px_rgba(0,255,255,0.7)]">
+                </div>
+
+                <!-- Title -->
+                <h2 class="text-[#44F3CA] text-xl font-semibold mb-1">AIS Chatbot</h2>
+                <p class="text-[#FFFFFF] text-sm mb-6">
+                    Silakan masukkan email Anda untuk masuk ke dalam aplikasi Ais Chatbot
+                </p>
+
+                <!-- Form -->
+                <form method="POST" class="space-y-4">
+                    {% csrf_token %}
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Masukkan Korporat/Pribadi"
+                        class="w-full p-3 rounded-lg bg-black border border-[#44F3CA] placeholder-[#BFBFBF] focus:outline-none focus:ring-2 focus:ring-[#44F3CA]"
+                        required>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Masukkan Kata Sandi"
+                        class="w-full p-3 rounded-lg bg-black border border-[#44F3CA] placeholder-[#BFBFBF] focus:outline-none focus:ring-2 focus:ring-[#44F3CA]"
+                        required>
+                    <button
+                        type="submit"
+                        class="w-full bg-[#44F3CA] text-black font-semibold py-3 rounded-lg hover:bg-[#44F3CA] transition">
+                        Masuk
+                    </button>
+                </form>
+
+                <!-- Forgot Password -->
+                <a href="#" class="block mt-4 text-sm text-[#44F3CA] hover:underline">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Typed.js Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new Typed("#typed-text", {
+                strings: [
+                    "Halo! Selamat datang di AIS Chatbot, asisten digital cerdas milik PLN!",
+                    "AIS dirancang untuk memandu Anda menjalankan operasional Catat Meter secara akurat.",
+                    "Dengan AIS, Anda tidak hanya dipandu — Anda didukung untuk bekerja lebih cepat, tepat, dan nyaman.",
+                    "Ayo login sekarang dan jelajahi berbagai fitur pintar yang telah kami siapkan khusus untuk Anda!",
+                ],
+                typeSpeed: 50,
+                backSpeed: 10,
+                backDelay: 1000,
+                loop: true,
+                showCursor: true,
+                cursorChar: "|"
+            });
+        });
+    </script>
+</body>
+</html>

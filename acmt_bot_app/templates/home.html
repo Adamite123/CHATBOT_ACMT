@@ -1,0 +1,291 @@
+{% load static tailwind_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        };
+    </script>
+
+    <title>AIS</title>
+    <link rel="icon" href="{% static 'assets/logo.png' %}" type="image/png" />
+
+    {% tailwind_css %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex">
+
+    <!-- Sidebar -->
+    <aside id="sidebar"
+        class="w-64 bg-white dark:bg-gray-800 borxder-r border-gray-300 dark:border-gray-700 h-screen p-4 flex-col hidden md:flex">
+        <h2 class="flex items-center space-x-2 pb-4" style="margin:auto">
+            <img class="drop-shadow-[0_0_10px_rgba(0,255,255,0.7)]" src="{% static 'assets/logo.png' %}" alt="Logo"
+                class="h-10 sm:h-12 md:h-14 w-auto">
+            <span class="text-base sm:text-lg font-bold">AIS</span>
+        </h2>
+
+        <button class="bg-green-600 text-white px-4 py-2 rounded mb-4 w-full hover:bg-green-700">+ Chat Baru</button>
+        <div class="flex-1 overflow-y-auto space-y-2 text-sm">
+            <div
+                class="dark:border-gray-600 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer truncate">
+                Apa arti IMEI di ACMT</div>
+            <div
+                class="dark:border-gray-600 p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer truncate">
+                Bagaimana mengakses website acmt</div>
+        </div>
+        <div class="mt-4 pt-4 border-t dark:border-gray-600 text-sm">
+            <p>adam.muhammad</p>
+            <button class="text-blue-500 dark:text-blue-400 hover:underline">Logout</button>
+        </div>
+    </aside>
+
+    <!-- Main Area -->
+    <main class="flex-1 flex flex-col h-screen">
+
+        <!-- Header -->
+        <!-- Mobile Header (Hanya muncul di layar kecil) -->
+        <header
+            class="flex justify-between items-center p-4 bg-white dark:bg-gray-800 border-b dark:border-gray-700 md:hidden">
+            <!-- Hamburger untuk mobile -->
+            <button onclick="toggleSidebar()" class="text-lg font-bold">☰</button>
+            <!-- Dark Mode untuk mobile -->
+            <button onclick="toggleDarkMode()" class="text-sm bg-gray-300 dark:bg-gray-700 px-3 py-1 rounded">
+                🌙/☀️
+            </button>
+        </header>
+
+        <!-- Desktop Header (Hanya muncul di md ke atas) -->
+        <header
+            class="hidden md:flex justify-end items-center p-4 bg-white dark:bg-gray-800 border-b dark:border-gray-700">
+            <!-- Dark Mode untuk desktop -->
+            <button onclick="toggleDarkMode()" class="text-sm bg-gray-300 dark:bg-gray-700 px-3 py-1 rounded">
+                🌙/☀️
+            </button>
+        </header>
+
+
+
+        <!-- Chat Display -->
+        <div class="flex-1 overflow-auto p-6 space-y-4">
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- <div class="block md:hidden">Tampil di mobile saja</div> -->
+
+                <!-- Topik Populer -->
+                <!-- Label -->
+                <!-- Pembungkus relative -->
+                <div class="relative mt-4 h-[100px]">
+                    <!-- Topik Populer Absolute -->
+                    <div class="absolute top-0 left-0 w-full z-10">
+                        <label class="block text-sm font-medium text-gray-200 mb-2">Topik Populer</label>
+
+                        <!-- Swiper Container -->
+                        <div class="swiper topikSwiper w-full max-w-full">
+                            <div class="swiper-wrapper">
+                                <!-- Slide Item -->
+                                <div class="swiper-slide !w-auto">
+                                    <span
+                                        class="block px-4 py-2 rounded-full border border-[#44F3CA] text-[#44F3CA] text-sm bg-gray-900 whitespace-nowrap">
+                                        ID Pelanggan Dobel
+                                    </span>
+                                </div>
+                                <div class="swiper-slide !w-auto">
+                                    <span
+                                        class="block px-4 py-2 rounded-full border border-[#44F3CA] text-[#44F3CA] text-sm bg-gray-900 whitespace-nowrap">
+                                        Reset IMEI
+                                    </span>
+                                </div>
+                                <div class="swiper-slide !w-auto">
+                                    <span
+                                        class="block px-4 py-2 rounded-full border border-[#44F3CA] text-[#44F3CA] text-sm bg-gray-900 whitespace-nowrap">
+                                        Perubahan Otorisasi
+                                    </span>
+                                </div>
+                                <div class="swiper-slide !w-auto">
+                                    <span
+                                        class="block px-4 py-2 rounded-full border border-[#44F3CA] text-[#44F3CA] text-sm bg-gray-900 whitespace-nowrap">
+                                        Reset Setting
+                                    </span>
+                                </div>
+                                <div class="swiper-slide !w-auto">
+                                    <span
+                                        class="block px-4 py-2 rounded-full border border-[#44F3CA] text-[#44F3CA] text-sm bg-gray-900 whitespace-nowrap">
+                                        Foto Baca Meter Tidak Terkirim
+                                    </span>
+                                </div>
+                                <div class="swiper-slide !w-auto">
+                                    <span
+                                        class="block px-4 py-2 rounded-full border border-[#44F3CA] text-[#44F3CA] text-sm bg-gray-900 whitespace-nowrap">
+                                        Daftar akun ACMT
+                                    </span>
+                                </div>
+                                <!-- Tambah slide lainnya -->
+                            </div>
+                            <!-- <div class="swiper-pagination mt-2"></div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <script>
+                    new Swiper(".topikSwiper", {
+                        slidesPerView: "auto",
+                        spaceBetween: 12,
+                        pagination: {
+                            el: ".swiper-pagination",
+                            clickable: true,
+                            dynamicBullets: true,
+                        },
+                    });
+                </script>
+
+
+                <!-- Case Populer -->
+                <!-- Bungkus Relative -->
+                <div class="relative mt-6 h-[360px] sm:h-[300px]">
+                    <!-- Konten Absolute -->
+                    <div class="absolute top-0 left-0 w-full z-10">
+                        <label class="block text-sm font-medium text-gray-200 mb-2">Case Populer</label>
+
+                        <!-- Swiper -->
+                        <div class="swiper mySwiper w-full max-w-full">
+                            <div class="swiper-wrapper">
+                                <!-- Slide 1 -->
+                                <div class="swiper-slide w-[240px] sm:w-[280px]">
+                                    <div class="border border-[#44F3CA] rounded-lg p-4 text-white bg-gray-900">
+                                        <div
+                                            class="text-xs inline-block px-2 py-0.5 rounded-full bg-[#44F3CA] text-black mb-2">
+                                            ID Pelanggan Dobel
+                                        </div>
+                                        <div class="font-semibold truncate">Kendala id pelanggan dobel pada ACMT</div>
+                                        <p class="text-sm mt-1 text-gray-300 truncate">Yth Bapak/Ibu<br>Silahkan untuk
+                                            mel...</p>
+                                    </div>
+                                </div>
+
+                                <!-- Slide 2 -->
+                                <div class="swiper-slide w-[240px] sm:w-[280px]">
+                                    <div class="border border-[#44F3CA] rounded-lg p-4 text-white bg-gray-900">
+                                        <div
+                                            class="text-xs inline-block px-2 py-0.5 rounded-full bg-[#44F3CA] text-black mb-2">
+                                            WO ACMT
+                                        </div>
+                                        <div class="font-semibold truncate">WO ACMT Kosong</div>
+                                        <p class="text-sm mt-1 text-gray-300 truncate">Yth Bapak/Ibu<br>Silahkan untuk
+                                            mel...</p>
+                                    </div>
+                                </div>
+
+                                <!-- Slide 3 -->
+                                <div class="swiper-slide w-[240px] sm:w-[280px]">
+                                    <div class="border border-[#44F3CA] rounded-lg p-4 text-white bg-gray-900">
+                                        <div
+                                            class="text-xs inline-block px-2 py-0.5 rounded-full bg-[#44F3CA] text-black mb-2">
+                                            IMEI
+                                        </div>
+                                        <div class="font-semibold truncate">Tentang IMEI</div>
+                                        <p class="text-sm mt-1 text-gray-300 truncate">Yth Bapak/Ibu<br>Silahkan untuk
+                                            mel...</p>
+                                    </div>
+                                </div>
+
+                                <!-- Slide 4 -->
+                                <div class="swiper-slide w-[240px] sm:w-[280px]">
+                                    <div class="border border-[#44F3CA] rounded-lg p-4 text-white bg-gray-900">
+                                        <div
+                                            class="text-xs inline-block px-2 py-0.5 rounded-full bg-[#44F3CA] text-black mb-2">
+                                            SOP ACMT
+                                        </div>
+                                        <div class="font-semibold truncate">SOP Pendaftaran akun ACMT</div>
+                                        <p class="text-sm mt-1 text-gray-300 truncate">Yth Bapak/Ibu<br>Silahkan untuk
+                                            mel...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pagination -->
+                            <!-- <div class="swiper-pagination mt-2"></div> -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <script>
+                    new Swiper(".mySwiper", {
+                        slidesPerView: "auto",
+                        spaceBetween: 16,
+                        pagination: {
+                            el: ".swiper-pagination",
+                            clickable: true,
+                            bulletClass: "swiper-pagination-bullet",
+                            bulletActiveClass: "swiper-pagination-bullet-active"
+                        }
+                    });
+                </script>
+
+
+                <div
+                    class="bg-blue-100 dark:bg-blue-900 text-blue-900 dark:text-blue-100 p-3 rounded-lg self-end w-fit max-w-[80%] ml-auto">
+                    Halo, ada yang bisa dibantu?
+                </div>
+                <div
+                    class="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 p-3 rounded-lg w-fit max-w-[80%]">
+                    Ya! Tolong bantu buat UI ChatGPT.
+                </div>
+            </div>
+        </div>
+
+        <!-- Input -->
+        <form class="p-4">
+            <div class="max-w-3xl mx-auto w-full">
+                <div
+                    class="flex items-center bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 shadow-md rounded-full px-4 py-2">
+
+                    <!-- Optional icon kiri -->
+                    <i class="fas fa-plus mr-3 text-gray-500 text-sm"></i>
+
+                    <!-- Input -->
+                    <input type="text" placeholder="Tulis pesan..."
+                        class="flex-1 bg-transparent focus:outline-none text-sm text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500" />
+
+                    <!-- Tombol Kirim Kecil -->
+                    <button type="submit"
+                        class="ml-2 bg-black text-white w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-800 transition">
+                        <i class="fas fa-arrow-up text-xs"></i>
+                    </button>
+
+                </div>
+            </div>
+        </form>
+
+    </main>
+
+    <!-- JS for Toggle -->
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.classList.toggle("hidden");
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle("dark");
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
