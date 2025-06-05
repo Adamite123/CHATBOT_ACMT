@@ -15,9 +15,8 @@ Follow these steps to set up and run the Django project:
 ## Prerequisites
 
 - Python installed (version 3.x recommended)
-- `pip` package manager
-- Virtual environment tool (optional)
-- Django installed
+- `pip` package manager (Jangan lupa centang pip waktu install python)
+- Postgre installed
 
 ## Steps to Run
 
@@ -29,26 +28,24 @@ git clone <repository-url>
 cd ICONIST
 ```
 
-2. **Set Up a Virtual Environment** (optional)  
-   Create and activate a virtual environment:
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate or .\Scripts\activate
-```
-
-3. **Install Dependencies**  
+2. **Install Dependencies**  
    Install the required Python packages:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. **Apply Migrations**  
+3. **Buat Database di Postgre**  
+   Nama database dan password database bebas jangan lupa bagian .env bisa disesuaikan.
+   
+   Penting!! jangan lupa tambahkan password saat install postgre
+
+
+4. **Apply Migrations**  (Fungsinya untuk import Table didalam database)
    Run database migrations:
 
 ```bash
-# python manage.py migrate
+python manage.py migrate
 ```
 
 5. **Run the Development Server**  
@@ -71,5 +68,4 @@ http://127.0.0.1:8000/
 
 ## Additional Notes
 
-- Ensure you have configured the `.env` file or settings for database and environment variables if required.
-- Use `python manage.py createsuperuser` to create an admin user for the Django admin panel.
+- Jangan lupa `.env` file variable harus diseuaikan dengan settingan database postgre
