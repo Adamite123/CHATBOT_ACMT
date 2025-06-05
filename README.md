@@ -69,3 +69,33 @@ http://127.0.0.1:8000/
 ## Additional Notes
 
 - Jangan lupa `.env` file variable harus diseuaikan dengan settingan database postgre
+
+
+# How to setting github on vscodes to use own branch
+Setiap orang harus development di branch masing-masing. Dilarang asal merger ke master. Untuk dilakukan merger harus dilakukan komunikasi terlebih dahulu.
+
+1. **Buat branch**
+```
+Membuat branch baru(berdasarkan nama) di https://github.com/Adamite123/CHATBOT_ACMT/branches (klik button new branch)
+```
+
+2. **Melihat Branch aktif**
+Cek terhubung ke branch mana
+```
+git branch -a
+```
+
+3. **Masuk ke branch dari VSCodes**
+Tentukan branch mana yang anda masuki
+```
+git checkout nama_branch
+```
+
+4. **Merge dari master**
+Branch pertama kali dibuat pasti kosong oleh karena itu perlu di merge atau mengambil file dari repo master
+```
+git merge master
+```
+
+5. **Cek Log Branch**
+Setiap perubahan akan tercatat di Log aktif(Log yang anda masuki), setiap dilakukan commit harus cek log untuk dipastikan perubahan tersimpan.
