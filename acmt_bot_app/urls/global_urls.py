@@ -8,4 +8,7 @@ urlpatterns = [
 
     # LOGIN
     path('login/', views.login_view, name='login'),
+
+    #TES
+    path('tes/', views.tes_view, name='tes'),
 ]

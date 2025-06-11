@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Login AIS Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body class="min-h-screen bg-black flex items-center justify-center px-4">
+
+    <!-- Bubble kiri atas -->
+    <div class="absolute top-[280px] -left-[15px] w-[100px] h-[100px] bg-[#50E9D0] opacity-70 rounded-full blur-sm"></div>
+    <div class="absolute top-[360px] left-12 w-[100px] h-[100px] bg-[#50E9D0] opacity-70 rounded-full blur-sm"></div>
+    <div class="absolute top-[380px] -left-[55px] w-[100px] h-[100px] bg-[#50E9D0] opacity-70 rounded-full blur-sm"></div>
+
+    <!-- Bubble kanan bawah -->
+    <div class="absolute bottom-0 right-0 w-24 h-24 bg-[#44F3CA] opacity-30 rounded-full blur-md"></div>
+
+  <div class="w-full max-w-[90%] bg-black text-white text-center">
+    <!-- Logo -->
+    <div class="mb-8">
+        <img src="{% static 'assets/logo.png' %}" alt="AIS Logo" class="mx-auto w-[200px] h-[200px]">
+    </div>
+
+    <!-- Judul -->
+    <h1 class="text-[22px] md:text-[38px] font-semibold text-[#44F3CA] mb-2">Masuk AIS Chatbot</h1>
+    <p class="text-sm md:text-[28px] mb-8 leading-10">
+      Silahkan masukkan email Anda untuk masuk ke <br>dalam aplikasi Ais Chatbot
+    </p>
+
+    <!-- Form -->
+    <form class="px-4 text-left">
+      <!-- Email -->
+      <div>
+        <label class="block text-[#44F3CA] mb-8 text-sm md:text-[42px] font-normal">Email</label>
+        <input 
+          type="email" 
+          placeholder="Masukkan Korporat/Pribadi"
+          class="w-full px-7 py-7 bg-transparent border-2 border-[#44F3CA] rounded-[30px] text-white placeholder-[#BFBFBF] text-sm md:text-[36px] focus:outline-none"
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="mt-8">
+        <label class="block text-[#44F3CA] mb-8 text-sm md:text-[42px] font-normal">Password</label>
+        <input 
+          type="password" 
+          placeholder="Masukkan Kata Sandi"
+          class="w-full px-7 py-7 bg-transparent border-2 border-[#44F3CA] rounded-[30px] text-white placeholder-[#BFBFBF] text-sm md:text-[36px] focus:outline-none"
+        />
+      </div>
+
+      <!-- Forgot Password -->
+      <div class="text-right mt-4 text-[#44F3CA] text-sm md:text-[30px]">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <!-- Login Button -->
+      <button 
+        type="submit"
+        class="w-full py-8 mt-[350px] rounded-[20px] bg-gray-600 text-white text-sm md:text-[30px] cursor-not-allowed opacity-60"
+        disabled
+      >
+        LOGIN
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>
