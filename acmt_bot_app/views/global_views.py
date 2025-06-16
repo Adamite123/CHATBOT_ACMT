@@ -8,5 +8,5 @@ def home(request):
 def login_view(request):
     return render(request, "loginv2.html")
 
-def tes_view(request):
-    return render(request, "tes.html")
+def forgot_password_view(request):
+    return render(request, "forgot_password.html")
