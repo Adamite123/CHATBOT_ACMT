@@ -7,3 +7,6 @@ def home(request):
 
 def login_view(request):
     return render(request, "login.html")
+
+def tes_view(request):
+    return render(request, "tes.html")
