@@ -6,7 +6,11 @@ def home(request):
 
 
 def login_view(request):
-    return render(request, "login.html")
+    return render(request, "loginv2.html")
+
+def forgot_password_view(request):
+    return render(request, "forgot_password.html")
 
 def tes_view(request):
     return render(request, "tes.html")
+    

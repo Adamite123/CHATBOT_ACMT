@@ -8,7 +8,10 @@ urlpatterns = [
 
     # LOGIN
     path('login/', views.login_view, name='login'),
-    
-    # TES
+
+    #Forgot Password
+    path('forgot-password/', views.forgot_password_view, name='forgot-password'),
+
+    #tes
     path('tes/', views.tes_view, name='tes'),
 ]
