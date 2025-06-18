@@ -1,12 +1,16 @@
 {% load static %}
-{# HAPUS {% load widget_tweaks %} jika Anda tidak lagi menggunakannya untuk filter lain di halaman ini #}
+{% load widget_tweaks %} {# Tetap gunakan ini jika Anda menambahkan atribut lain di masa depan #}
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Daftar AIS Chatbot</title> {# Ubah title untuk signup #}
+    <title>Daftar AIS Chatbot</title> 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    {# Tambahkan Toastify.js CDN #}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 <body class="bg-black text-white min-h-screen">
     <div class="grid grid-cols-1 md:grid-cols-2 min-h-screen relative">
@@ -20,7 +24,7 @@
         </div>
 
         <div class="flex items-center justify-center p-8">
-            <div class="w-full max-w-sm bg-[#111111] p-8 rounded-2xl shadow-lg text-center">
+            <div class="w-full md:max-w-lg lg:max-w-xl bg-[#111111] p-8 rounded-2xl shadow-lg text-center">
 
                 <div class="flex justify-center mb-6">
                     <img src="{% static 'assets/logo.png' %}" alt="AIS Logo" class="w-16 h-16 drop-shadow-[0_0_10px_rgba(0,255,255,0.7)]">
@@ -33,15 +37,73 @@
 
                 <form method="POST" class="space-y-4">
                     {% csrf_token %}
-                    {% for field in form %}
+                    
+                    {# Mulai Grid untuk input field #}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> 
+                        {# Baris 1 #}
                         <div class="relative">
-                            <label for="{{ field.id_for_label }}" class="sr-only">{{ field.label }}</label>
-                            {{ field }} {# <-- BARIS INI KEMBALI SEDERHANA #}
-                            {% for error in field.errors %}
+                            <label for="{{ form.first_name.id_for_label }}" class="sr-only">Nama Depan</label>
+                            {{ form.first_name }}
+                            {% for error in form.first_name.errors %}
                                 <span class="text-red-500 text-xs text-left block mt-1">{{ error }}</span>
                             {% endfor %}
                         </div>
-                    {% endfor %}
+                        <div class="relative">
+                            <label for="{{ form.last_name.id_for_label }}" class="sr-only">Nama Belakang</label>
+                            {{ form.last_name }}
+                            {% for error in form.last_name.errors %}
+                                <span class="text-red-500 text-xs text-left block mt-1">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        {# Baris 2 #}
+                        <div class="relative">
+                            <label for="{{ form.username.id_for_label }}" class="sr-only">Username</label>
+                            {{ form.username }}
+                            {% for error in form.username.errors %}
+                                <span class="text-red-500 text-xs text-left block mt-1">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="relative">
+                            <label for="{{ form.email.id_for_label }}" class="sr-only">Email</label>
+                            {{ form.email }}
+                            {% for error in form.email.errors %}
+                                <span class="text-red-500 text-xs text-left block mt-1">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        {# Baris 3 #}
+                        <div class="relative">
+                            <label for="{{ form.phone_number.id_for_label }}" class="sr-only">Nomor Telepon</label>
+                            {{ form.phone_number }}
+                            {% for error in form.phone_number.errors %}
+                                <span class="text-red-500 text-xs text-left block mt-1">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="relative">
+                            <label for="{{ form.address.id_for_label }}" class="sr-only">Alamat Lengkap</label>
+                            {{ form.address }}
+                            {% for error in form.address.errors %}
+                                <span class="text-red-500 text-xs text-left block mt-1">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        {# Baris 4 #}
+                        <div class="relative">
+                            <label for="{{ form.password1.id_for_label }}" class="sr-only">Kata Sandi</label>
+                            {{ form.password1 }}
+                            {% for error in form.password1.errors %}
+                                <span class="text-red-500 text-xs text-left block mt-1">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="relative">
+                            <label for="{{ form.password2.id_for_label }}" class="sr-only">Konfirmasi Kata Sandi</label>
+                            {{ form.password2 }}
+                            {% for error in form.password2.errors %}
+                                <span class="text-red-500 text-xs text-left block mt-1">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div> {# Akhir Grid #}
 
                     {# Jika ada error non-field #}
                     {% if form.non_field_errors %}

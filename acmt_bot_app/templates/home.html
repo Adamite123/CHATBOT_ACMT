@@ -49,7 +49,7 @@
                 Bagaimana mengakses website acmt</div>
         </div>
         <div class="mt-4 pt-4 border-t dark:border-gray-600 text-sm">
-            <p>adam.muhammad</p>
+            <p>{{ request.user.username }}</p>
             <a href="{% url 'login' %}" class="text-blue-500 dark:text-blue-400 hover:underline">Logout</a>
         </div>
     </aside>
