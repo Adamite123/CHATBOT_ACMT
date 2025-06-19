@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Login AIS Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-[#1C1C1C] to-[#0D0D0D] text-white flex items-center justify-center relative px-6">
+
+    <!-- Background Cube Right -->
+    <img src="{% static 'assets/box-right.png' %}" alt="cube-left" class="absolute top-20 right-0 w-34 pointer-events-none select-none">
+    <!-- Background Cube Bottom -->
+    <img src="{% static 'assets/box-bottom.png' %}" alt="cube-bottom" class="absolute bottom-0 left-12 w-34 pointer-events-none select-none">
+    <!-- Background Cube Top -->
+    <img src="{% static 'assets/box-top.png' %}" alt="cube-top" class="absolute top-0 left-80 w-34 pointer-events-none select-none">
+
+    <!-- Content -->
+    <div class="w-full xl:max-w-md flex flex-col items-center text-center space-y-8 xl:space-y-2">
+        <!-- Logo -->
+        <div class="mb-6">
+            <img src="{% static 'assets/success.svg' %}" alt="AIS Logo" class="w-60 xl:w-32 mx-auto drop-shadow-[0_0_20px_#44F3CA]">
+        </div>
+
+        <!-- Title -->
+        <div class="space-y-3">
+            <h1 class="text-white text-8xl xl:text-5xl font-semibold mb-5 xl:mb-1">Success!</h1>
+            <p class="text-4xl xl:text-lg text-white leading-relaxed">
+                Congratulation!, your password has been successfully <br>
+                changed. Make sure you remember the new password.
+            </p>
+            <p class="text-3xl xl:text-sm">
+                You will be redirect to your dashboard in <span class="font-bold">5...</span>
+            </p>
+            <div class="w-full py-5 xl:py-2 px-6 xl:px-6 rounded-xl xl:rounded-lg bg-[#44F3CA] text-[#6A6A6A] text-3xl xl:text-sm font-semibold">
+                <a href="{% url 'login' %}">
+                    LOGIN
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

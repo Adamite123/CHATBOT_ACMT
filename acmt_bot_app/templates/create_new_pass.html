@@ -26,7 +26,7 @@
         <!-- Title -->
         <div class="mb-6 xl:mb-2">
             <h1 class="text-[#44F3CA] text-5xl xl:text-2xl font-semibold mb-5 xl:mb-1">Masuk AIS Chatbot</h1>
-            <p class="text-4xl xl:text-lg text-white leading-relaxed">Silahkan masukkan email Anda untuk<br>mengirimkan kode OTP</p>
+            <p class="text-4xl xl:text-lg text-white leading-relaxed">Silahkan masukkan password baru</p>
         </div>
 
         <!-- Form -->
@@ -39,14 +39,26 @@
                 <p>Back to Login</p>
             </a>
             <form action="" class="flex flex-col justify-between">
-                <!-- Email -->
+                <!-- Password -->
                 <div class="text-left space-y-1 mb-3 xl:mb-1">
-                    <label for="email" class="block text-[#44F3CA] text-4xl xl:text-sm font-semibold mb-4 xl:mb-1">Email</label>
+                    <label for="password" class="block text-[#44F3CA] text-4xl xl:text-sm font-semibold mb-4 xl:mb-1">New Password</label>
                     <input 
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Masukkan Email Korporat/Pribadi"
+                    type="password"
+                    name="new-password"
+                    id="new-password"
+                    placeholder="********"
+                    class="w-full px-6 xl:px-2 py-7 xl:py-3 bg-transparent border-4 xl:border border-[#44F3CA] rounded-3xl xl:rounded-lg text-white placeholder-[#BFBFBF] text-3xl xl:text-sm"
+                    >
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="text-left space-y-1 mb-3 xl:mb-1">
+                    <label for="password" class="block text-[#44F3CA] text-4xl xl:text-sm font-semibold mb-4 xl:mb-1">Confirm Password</label>
+                    <input 
+                    type="password"
+                    name="confirm-password"
+                    id="confirm-password"
+                    placeholder="********"
                     class="w-full px-6 xl:px-2 py-7 xl:py-3 bg-transparent border-4 xl:border border-[#44F3CA] rounded-3xl xl:rounded-lg text-white placeholder-[#BFBFBF] text-3xl xl:text-sm"
                     >
                 </div>
@@ -54,7 +66,7 @@
                 <!-- Submit -->
                  <div class="mt-8 xl:mt-8">
                      <button type="submit" class="w-full py-5 xl:py-2 rounded-xl xl:rounded-lg bg-[#4C4C4C] text-[#6A6A6A] text-3xl xl:text-sm font-semibold">
-                         SUBMIT
+                         CREATE NEW PASSWORD
                      </button>
                  </div>
             </form>
@@ -64,13 +76,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const emailInput = document.getElementById('email');
+            const newPasswordInput = document.getElementById('new-password');
+            const confirmPasswordInput = document.getElementById('confirm-password');
             const submitButton = document.querySelector('button[type="submit"]');
 
-            function validateEmailInput() {
-                const emailFilled = emailInput.value.trim() !== '';
-                
-                if (emailFilled) {
+            function validatePasswords() {
+                const newPassword = newPasswordInput.value.trim();
+                const confirmPassword = confirmPasswordInput.value.trim();
+
+                const isValid = newPassword !== '' && confirmPassword !== '' && newPassword === confirmPassword;
+
+                if (isValid) {
                     submitButton.disabled = false;
                     submitButton.classList.remove('opacity-60', 'cursor-not-allowed', 'bg-[#4C4C4C]', 'text-[#6A6A6A]');
                     submitButton.classList.add('bg-[#44F3CA]', 'text-black', 'font-bold', 'cursor-pointer');
@@ -81,10 +97,11 @@
                 }
             }
 
-            emailInput.addEventListener('input', validateEmailInput);
-            validateEmailInput();
+            newPasswordInput.addEventListener('input', validatePasswords);
+            confirmPasswordInput.addEventListener('input', validatePasswords);
+
+            validatePasswords(); // initial check
         });
     </script>
-
 </body>
 </html>

@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Login AIS Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-[#1C1C1C] to-[#0D0D0D] text-white flex items-center justify-center relative px-6">
+
+    <!-- Background Cube Right -->
+    <img src="{% static 'assets/box-right.png' %}" alt="cube-left" class="absolute top-20 right-0 w-34 pointer-events-none select-none">
+    <!-- Background Cube Bottom -->
+    <img src="{% static 'assets/box-bottom.png' %}" alt="cube-bottom" class="absolute bottom-0 left-12 w-34 pointer-events-none select-none">
+    <!-- Background Cube Top -->
+    <img src="{% static 'assets/box-top.png' %}" alt="cube-top" class="absolute top-0 left-80 w-34 pointer-events-none select-none">
+
+    <!-- Content -->
+    <div class="w-full xl:max-w-md flex flex-col items-center text-center space-y-8 xl:space-y-2">
+        <!-- Logo -->
+        <div class="mb-6">
+            <img src="{% static 'assets/logo-1.svg' %}" alt="AIS Logo" class="w-48 xl:w-32 mx-auto drop-shadow-[0_0_20px_#44F3CA]">
+        </div>
+
+        <!-- Title -->
+        <div class="mb-6 xl:mb-2">
+            <h1 class="text-[#44F3CA] text-5xl xl:text-2xl font-semibold mb-5 xl:mb-1">Masuk AIS Chatbot</h1>
+            <p class="text-4xl xl:text-lg text-white leading-relaxed">Silahkan masukkan email Anda untuk<br>mengirimkan kode OTP</p>
+        </div>
+
+        <!-- Form -->
+        <div class="w-[90%] bg-[#111] px-6 py-2 xl:py-4 rounded-xl shadow-lg">
+            <!-- Back to Login -->
+            <a href="{% url 'login' %}" class="w-full xl:flex text-left text-xs text-[#44F3CA] space-x-1 hidden mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+                <p>Back to Login</p>
+            </a>
+            <form action="" class="flex flex-col justify-between">
+                <!-- Kode OTP -->
+                <div class="text-left space-y-1 mb-3 xl:mb-1">
+                    <label for="Email" class="block px-3 xl:px-1 text-[#44F3CA] text-[42px] xl:text-[15px] text-left mb-2 xl:text-left xl:mb-3">Kode OTP</label>
+                    <div class="flex justify-center space-x-5 xl:space-x-5"> 
+                      <input placeholder="-" type="text" maxlength="1" class="placeholder-[#BFBFBF] otp-input w-28 h-28 xl:w-10 xl:h-10 text-[46px] xl:text-[16px] text-center border-2 border-[#44F3CA] bg-transparent rounded-[30px] xl:rounded-[10px] text-white focus:outline-none focus:ring-2 focus-ring-teal-400" >
+                      <input placeholder="-" type="text" maxlength="1" class="placeholder-[#BFBFBF] otp-input w-28 h-28 xl:w-10 xl:h-10 text-[46px] xl:text-[16px] text-center border-2 border-[#44F3CA] bg-transparent rounded-[30px] xl:rounded-[10px] text-white focus:outline-none focus:ring-2 focus-ring-teal-400" >
+                      <input placeholder="-" type="text" maxlength="1" class="placeholder-[#BFBFBF] otp-input w-28 h-28 xl:w-10 xl:h-10 text-[46px] xl:text-[16px] text-center border-2 border-[#44F3CA] bg-transparent rounded-[30px] xl:rounded-[10px] text-white focus:outline-none focus:ring-2 focus-ring-teal-400" >
+                      <input placeholder="-" type="text" maxlength="1" class="placeholder-[#BFBFBF] otp-input w-28 h-28 xl:w-10 xl:h-10 text-[46px] xl:text-[16px] text-center border-2 border-[#44F3CA] bg-transparent rounded-[30px] xl:rounded-[10px] text-white focus:outline-none focus:ring-2 focus-ring-teal-400" >
+                      <input placeholder="-" type="text" maxlength="1" class="placeholder-[#BFBFBF] otp-input w-28 h-28 xl:w-10 xl:h-10 text-[46px] xl:text-[16px] text-center border-2 border-[#44F3CA] bg-transparent rounded-[30px] xl:rounded-[10px] text-white focus:outline-none focus:ring-2 focus-ring-teal-400" >
+                      <input placeholder="-" type="text" maxlength="1" class="placeholder-[#BFBFBF] otp-input w-28 h-28 xl:w-10 xl:h-10 text-[46px] xl:text-[16px] text-center border-2 border-[#44F3CA] bg-transparent rounded-[30px] xl:rounded-[10px] text-white focus:outline-none focus:ring-2 focus-ring-teal-400" >
+                    </div>  
+                </div>
+
+                <!-- Countdown -->
+                <div>
+                    <p class="text-4xl xl:text-lg mt-4 xl:mt-1">
+                        Kirim Ulang OTP <span id="timer" class="text-teal-400">60 detik</span>
+                    </p>
+                </div>
+
+                <!-- Submit -->
+                 <div class="mt-8 xl:mt-8">
+                     <button type="submit" class="w-full py-5 xl:py-2 rounded-xl xl:rounded-lg bg-[#4C4C4C] text-[#6A6A6A] text-3xl xl:text-sm font-semibold">
+                         SUBMIT
+                     </button>
+                 </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const otpInputs = document.querySelectorAll('.otp-input');
+        const submitButton = document.querySelector('button[type="submit"]');
+
+        function validateOTP() {
+          let allFilled = true;
+          otpInputs.forEach(input => {
+            if (input.value.trim() === '') {
+              allFilled = false;
+            }
+          });
+
+          if (allFilled) {
+            submitButton.disabled = false;
+            submitButton.classList.remove('cursor-not-allowed', 'bg-[##4C4C4C]');
+            submitButton.classList.add('bg-[#44F3CA]', 'text-black', 'font-bold', 'cursor-pointer');
+          } else {
+            submitButton.disabled = true;
+            submitButton.classList.add('cursor-not-allowed', 'bg-[##4C4C4C]');
+            submitButton.classList.remove('bg-[#44F3CA]', 'text-black', 'font-bold', 'cursor-pointer');
+          }
+        }
+
+        otpInputs.forEach(input => {
+          input.addEventListener('input', validateOTP);
+        });
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        let duration = 60;
+        const timerDisplay = document.getElementById('timer');
+
+        function startCountdown() {
+        const countdown = setInterval(() => {
+            if (duration > 0) {
+            duration--;
+            timerDisplay.textContent = `${duration} detik`;
+            } else {
+            clearInterval(countdown);
+            timerDisplay.innerHTML = `<button id="resendOtp" class="text-[#44F3CA] underline">Kirim Ulang OTP</button>`;
+            
+            document.getElementById('resendOtp').addEventListener('click', () => {
+                duration = 60;
+                timerDisplay.textContent = `${duration} detik`;
+                startCountdown();
+
+                console.log("OTP dikirim ulang");
+            });
+            }
+        }, 1000);
+        }
+
+        startCountdown();
+    });
+    </script>
+</body>
+</html>

@@ -9,9 +9,15 @@ urlpatterns = [
     # LOGIN
     path('login/', views.login_view, name='login'),
 
+    #Kode OTP
+    path('kode-otp/', views.kode_otp_view, name='kode-otp'),
+
     #Forgot Password
     path('forgot-password/', views.forgot_password_view, name='forgot-password'),
 
-    #tes
-    path('tes/', views.tes_view, name='tes'),
+    #Reset Password
+    path('create-new-password/', views.create_new_password_view, name='create-new-password'),
+
+    #Success Reset Password
+    path('success-reset-password/', views.success_reset_password_view, name='success-reset-password'),
 ]

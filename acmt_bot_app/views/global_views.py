@@ -6,11 +6,17 @@ def home(request):
 
 
 def login_view(request):
-    return render(request, "login_default.html")
+    return render(request, "login.html")
+
+def kode_otp_view(request):
+    return render(request, "kode_otp.html")
 
 def forgot_password_view(request):
     return render(request, "forgot_password.html")
 
-def tes_view(request):
-    return render(request, "tes.html")
+def create_new_password_view(request):
+    return render(request, "create_new_pass.html")
+
+def success_reset_password_view(request):
+    return render(request, "success_reset_pass.html")
     
